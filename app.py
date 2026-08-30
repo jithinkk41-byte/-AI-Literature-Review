@@ -92,30 +92,34 @@ if st.button("Search Papers"):
 
         results = search_papers(query, top_n)
 
-        results = results[
+            results = results[
             results["Year"] >= min_year
         ]
 
-        st.subheader("Relevant Papers")
+        if results.empty:
+            st.warning("No papers found for the selected year.")
 
-        for i, (_, row) in enumerate(results.iterrows(), 1):
+        else:
+            st.subheader("Relevant Papers")
 
-            with st.expander(
-                f"{i}. {row['Title']}"
-            ):
+            for i, (_, row) in enumerate(results.iterrows(), 1):
 
-                st.write("**Year:**", row["Year"])
+                with st.expander(
+                    f"{i}. {row['Title']}"
+                ):
 
-                st.write(
-                    "**Relevance Score:**",
-                    round(row["Relevance_Score"], 3)
-                )
+                    st.write("**Year:**", row["Year"])
 
-                st.write("**Abstract:**")
-                st.write(row["Abstract"])
+                    st.write(
+                        "**Relevance Score:**",
+                        round(row["Relevance_Score"], 3)
+                    )
 
-                st.write("**Paper:**")
-                st.write(row["URL"])
+                    st.write("**Abstract:**")
+                    st.write(row["Abstract"])
+
+                    st.write("**Paper:**")
+                    st.write(row["URL"])    
 
     else:
 
