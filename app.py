@@ -22,3 +22,16 @@ df["Search_Text"] = (
 ).str.lower()
 
 st.success("Dataset is ready for searching!")
+# Create TF-IDF search system
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+vectorizer = TfidfVectorizer(
+    stop_words="english",
+    max_features=5000
+)
+
+tfidf_matrix = vectorizer.fit_transform(
+    df["Search_Text"]
+)
+
+st.success("TF-IDF search system is ready!")
