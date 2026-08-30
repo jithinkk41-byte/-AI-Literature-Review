@@ -12,3 +12,13 @@ st.write("Total number of papers:", len(df))
 # Show first 5 papers
 st.subheader("Sample Papers")
 st.dataframe(df.head())
+# Prepare text for searching
+df["Title"] = df["Title"].fillna("")
+df["Abstract"] = df["Abstract"].fillna("")
+
+df["Search_Text"] = (
+    df["Title"].astype(str) + " " +
+    df["Abstract"].astype(str)
+).str.lower()
+
+st.success("Dataset is ready for searching!")
