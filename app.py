@@ -2,8 +2,15 @@ import streamlit as st
 import pandas as pd
 
 st.title("AI-Based Literature Review Assistant")
+st.write(
+    "An AI-based system for finding relevant "
+    "research papers using Natural Language Processing."
+)
 
-# Load the dataset
+st.info(
+    "Enter a research topic below to find "
+    "the most relevant papers from the dataset."
+)
 df = pd.read_csv("AI_Literature_Dataset.csv")
 
 # Show dataset information
