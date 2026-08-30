@@ -35,3 +35,23 @@ tfidf_matrix = vectorizer.fit_transform(
 )
 
 st.success("TF-IDF search system is ready!")
+# Function to search relevant papers
+from sklearn.metrics.pairwise import cosine_similarity
+
+def search_papers(query, top_n=5):
+    query_vector = vectorizer.transform([query.lower()])
+
+    similarity_scores = cosine_similarity(
+        query_vector,
+        tfidf_matrix
+    ).flatten()
+
+    top_indices = similarity_scores.argsort()[-top_n:][::-1]
+
+    results = df.iloc[top_indices].copy()
+
+    results["Relevance_Score"] = similarity_scores[top_indices]
+
+    return results
+
+st.success("Paper search function is ready!")
