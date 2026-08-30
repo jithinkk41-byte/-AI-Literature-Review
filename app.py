@@ -65,11 +65,11 @@ st.success("Paper search function is ready!")
 # Search interface
 
 st.header("Search Research Papers")
+
 query = st.text_input(
     "Enter your research topic:",
     placeholder="Example: machine learning in healthcare"
 )
-
 
 top_n = st.slider(
     "Number of papers to show:",
@@ -77,6 +77,7 @@ top_n = st.slider(
     max_value=10,
     value=5
 )
+
 min_year = st.number_input(
     "Minimum publication year:",
     min_value=int(df["Year"].min()),
@@ -89,8 +90,11 @@ if st.button("Search Papers"):
 
     if query.strip():
 
-    results = search_papers(query, top_n)
-results = results[results["Year"] >= min_year]
+        results = search_papers(query, top_n)
+
+        results = results[
+            results["Year"] >= min_year
+        ]
 
         st.subheader("Relevant Papers")
 
@@ -109,11 +113,17 @@ results = results[results["Year"] >= min_year]
 
                 st.write("**Abstract:**")
                 st.write(row["Abstract"])
-                
 
                 st.write("**Paper:**")
                 st.write(row["URL"])
 
+    else:
+
+        st.warning(
+            "Please enter a research topic."
+        )
+
+st.
     else:
 
         st.warning(
