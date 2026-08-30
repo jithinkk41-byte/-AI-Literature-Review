@@ -92,7 +92,7 @@ if st.button("Search Papers"):
 
         results = search_papers(query, top_n)
 
-            results = results[
+        results = results[
             results["Year"] >= min_year
         ]
 
