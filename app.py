@@ -123,7 +123,6 @@ if st.button("Search Papers"):
             "Please enter a research topic."
         )
 
-st.
     else:
 
         st.warning(
