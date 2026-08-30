@@ -71,20 +71,34 @@ top_n = st.slider(
 )
 
 if st.button("Search Papers"):
+
     if query.strip():
+
         results = search_papers(query, top_n)
 
         st.subheader("Relevant Papers")
 
-        for _, row in results.iterrows():
-            st.write("###", row["Title"])
-            st.write("Year:", row["Year"])
-            st.write(
-                "Relevance Score:",
-                round(row["Relevance_Score"], 3)
-            )
-            st.write(row["Abstract"])
-            st.write("Paper:", row["URL"])
-            st.divider()
+        for i, (_, row) in enumerate(results.iterrows(), 1):
+
+            with st.expander(
+                f"{i}. {row['Title']}"
+            ):
+
+                st.write("**Year:**", row["Year"])
+
+                st.write(
+                    "**Relevance Score:**",
+                    round(row["Relevance_Score"], 3)
+                )
+
+                st.write("**Abstract:**")
+                st.write(row["Abstract"])
+
+                st.write("**Paper:**")
+                st.write(row["URL"])
+
     else:
-        st.warning("Please enter a research topic.")
+
+        st.warning(
+            "Please enter a research topic."
+        )
