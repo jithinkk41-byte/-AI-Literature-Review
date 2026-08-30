@@ -101,6 +101,7 @@ if st.button("Search Papers"):
 
                 st.write("**Abstract:**")
                 st.write(row["Abstract"])
+                
 
                 st.write("**Paper:**")
                 st.write(row["URL"])
@@ -110,3 +111,13 @@ if st.button("Search Papers"):
         st.warning(
             "Please enter a research topic."
         )
+        # Sidebar
+st.sidebar.title("About")
+
+st.sidebar.write(
+    "This application helps users find "
+    "relevant research papers using TF-IDF "
+    "and cosine similarity."
+)
+
+st.sidebar.write("Dataset: 1,000 research papers")
