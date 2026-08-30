@@ -65,10 +65,11 @@ st.success("Paper search function is ready!")
 # Search interface
 
 st.header("Search Research Papers")
-
 query = st.text_input(
-    "Enter your research topic:"
+    "Enter your research topic:",
+    placeholder="Example: machine learning in healthcare"
 )
+
 
 top_n = st.slider(
     "Number of papers to show:",
