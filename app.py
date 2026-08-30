@@ -12,7 +12,7 @@ st.info(
     "the most relevant papers from the dataset."
 )
 df = pd.read_csv("AI_Literature_Dataset.csv")
-
+st.metric("Research Papers in Dataset", len(df))
 # Show dataset information
 st.write("Total number of papers:", len(df))
 
