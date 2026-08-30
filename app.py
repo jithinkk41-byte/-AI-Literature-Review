@@ -55,3 +55,36 @@ def search_papers(query, top_n=5):
     return results
 
 st.success("Paper search function is ready!")
+# Search interface
+
+st.header("Search Research Papers")
+
+query = st.text_input(
+    "Enter your research topic:"
+)
+
+top_n = st.slider(
+    "Number of papers to show:",
+    min_value=1,
+    max_value=10,
+    value=5
+)
+
+if st.button("Search Papers"):
+    if query.strip():
+        results = search_papers(query, top_n)
+
+        st.subheader("Relevant Papers")
+
+        for _, row in results.iterrows():
+            st.write("###", row["Title"])
+            st.write("Year:", row["Year"])
+            st.write(
+                "Relevance Score:",
+                round(row["Relevance_Score"], 3)
+            )
+            st.write(row["Abstract"])
+            st.write("Paper:", row["URL"])
+            st.divider()
+    else:
+        st.warning("Please enter a research topic.")
