@@ -97,16 +97,16 @@ if st.button("Search Papers"):
         ]
 
         if results.empty:
+
             st.warning("No papers found for the selected year.")
 
         else:
+
             st.subheader("Relevant Papers")
 
             for i, (_, row) in enumerate(results.iterrows(), 1):
 
-                with st.expander(
-                    f"{i}. {row['Title']}"
-                ):
+                with st.expander(f"{i}. {row['Title']}"):
 
                     st.write("**Year:**", row["Year"])
 
@@ -119,21 +119,20 @@ if st.button("Search Papers"):
                     st.write(row["Abstract"])
 
                     st.write("**Paper:**")
-                    st.write(row["URL"])    
-                    csv = results.to_csv(index=False)
+                    st.write(row["URL"])
 
-st.download_button(
-    "Download Results",
-    csv,
-    "search_results.csv",
-    "text/csv"
-)
+            csv = results.to_csv(index=False)
+
+            st.download_button(
+                "Download Results",
+                csv,
+                "search_results.csv",
+                "text/csv"
+            )
 
     else:
 
-        st.warning(
-            "Please enter a research topic."
-        )
+        st.warning("Please enter a research topic.")
         # Sidebar
 st.sidebar.title("About")
 
