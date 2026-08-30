@@ -77,6 +77,12 @@ top_n = st.slider(
     max_value=10,
     value=5
 )
+year_filter = st.slider(
+    "Minimum publication year:",
+    min_value=int(df["Year"].min()),
+    max_value=int(df["Year"].max()),
+    value=int(df["Year"].min())
+)
 
 if st.button("Search Papers"):
 
