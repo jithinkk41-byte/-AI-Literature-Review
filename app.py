@@ -122,12 +122,6 @@ if st.button("Search Papers"):
         st.warning(
             "Please enter a research topic."
         )
-
-    else:
-
-        st.warning(
-            "Please enter a research topic."
-        )
         # Sidebar
 st.sidebar.title("About")
 
