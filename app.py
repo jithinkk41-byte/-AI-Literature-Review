@@ -120,6 +120,14 @@ if st.button("Search Papers"):
 
                     st.write("**Paper:**")
                     st.write(row["URL"])    
+                    csv = results.to_csv(index=False)
+
+st.download_button(
+    "Download Results",
+    csv,
+    "search_results.csv",
+    "text/csv"
+)
 
     else:
 
