@@ -92,11 +92,9 @@ if st.button("Search Papers"):
 
         results = search_papers(query, top_n)
 
-        results = results[
-            results["Year"] >= min_year
-        ]
+        results = results[results["Year"] >= min_year]
 
-                if results.empty:
+        if results.empty:
             st.warning("No papers found for the selected year.")
 
         else:
@@ -126,6 +124,9 @@ if st.button("Search Papers"):
 
                     st.write("**Paper:**")
                     st.write(row["URL"])
+
+            csv = results.to_csv(index=False)
+
             st.download_button(
                 "Download Results",
                 csv,
@@ -134,8 +135,9 @@ if st.button("Search Papers"):
             )
 
     else:
-
         st.warning("Please enter a research topic.")
+
+# Sidebar
         # Sidebar
 st.sidebar.title("About")
 
