@@ -180,7 +180,51 @@ if st.button("Search Papers"):
     else:
         st.warning("Please enter a research topic.")
 
-# Sidebar
+# Sidebar # Paper Comparison
+
+st.header("Compare Research Papers")
+
+if "results" in locals() and len(results) >= 2:
+
+    paper_titles = results["Title"].tolist()
+
+    selected_papers = st.multiselect(
+        "Select 2 papers to compare:",
+        paper_titles,
+        max_selections=2
+    )
+
+    if len(selected_papers) == 2:
+
+        paper1 = results[
+            results["Title"] == selected_papers[0]
+        ].iloc[0]
+
+        paper2 = results[
+            results["Title"] == selected_papers[1]
+        ].iloc[0]
+
+        st.subheader("Paper 1")
+        st.write("**Title:**", paper1["Title"])
+        st.write("**Year:**", paper1["Year"])
+        st.write(
+            "**Relevance Score:**",
+            round(paper1["Relevance_Score"], 3)
+        )
+        st.write("**Abstract:**", paper1["Abstract"])
+
+        st.subheader("Paper 2")
+        st.write("**Title:**", paper2["Title"])
+        st.write("**Year:**", paper2["Year"])
+        st.write(
+            "**Relevance Score:**",
+            round(paper2["Relevance_Score"], 3)
+        )
+        st.write("**Abstract:**", paper2["Abstract"])
+
+else:
+
+    st.info("Search for papers first to enable comparison.")
         # Sidebar
 st.sidebar.title("About")
 
