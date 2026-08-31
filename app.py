@@ -133,7 +133,7 @@ if st.button("Search Papers"):
                 "search_results.csv",
                 "text/csv"
             )
-                 st.subheader("Compare Research Papers")
+                
 
             paper_titles = results["Title"].tolist()
 
