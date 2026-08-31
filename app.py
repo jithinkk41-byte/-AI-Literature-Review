@@ -117,7 +117,15 @@ if st.button("Search Papers"):
 
                     st.write("**Abstract:**")
                     st.write(row["Abstract"])
+                   st.write("**Quick Summary:**")
 
+abstract = str(row["Abstract"])
+
+sentences = abstract.split(".")
+
+summary = ". ".join(sentences[:2])
+
+st.write(summary + ".")
                     st.write("**Paper:**")
                     st.write(row["URL"])
 
