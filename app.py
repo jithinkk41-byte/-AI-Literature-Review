@@ -140,11 +140,11 @@ if st.button("Search Papers"):
             if len(paper_titles) >= 2:
 
                 selected_papers = st.multiselect(
-                    "Select 2 papers to compare:",
-                    paper_titles,
-                    max_selections=2
-                )
-
+    "Select 2 papers to compare:",
+    paper_titles,
+    max_selections=2,
+    key="paper_comparison"
+)
                 if len(selected_papers) == 2:
 
                     paper1 = results[
