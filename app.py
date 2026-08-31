@@ -115,17 +115,16 @@ if st.button("Search Papers"):
                         round(row["Relevance_Score"], 3)
                     )
 
-                    st.write("**Abstract:**")
+                                        st.write("**Abstract:**")
                     st.write(row["Abstract"])
-                   st.write("**Quick Summary:**")
 
-abstract = str(row["Abstract"])
+                    st.write("**Quick Summary:**")
 
-sentences = abstract.split(".")
+                    abstract = str(row["Abstract"])
+                    sentences = abstract.split(".")
+                    summary = ". ".join(sentences[:2])
 
-summary = ". ".join(sentences[:2])
-
-st.write(summary + ".")
+                    st.write(summary + ".")
                     st.write("**Paper:**")
                     st.write(row["URL"])
 
