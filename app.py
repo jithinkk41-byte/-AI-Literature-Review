@@ -96,15 +96,13 @@ if st.button("Search Papers"):
             results["Year"] >= min_year
         ]
 
-        if results.empty:
-
+                if results.empty:
             st.warning("No papers found for the selected year.")
 
         else:
-
             st.subheader("Relevant Papers")
 
-                        for i, (_, row) in enumerate(results.iterrows(), 1):
+            for i, (_, row) in enumerate(results.iterrows(), 1):
 
                 with st.expander(f"{i}. {row['Title']}"):
 
@@ -128,9 +126,6 @@ if st.button("Search Papers"):
 
                     st.write("**Paper:**")
                     st.write(row["URL"])
-
-            csv = results.to_csv(index=False)
-
             st.download_button(
                 "Download Results",
                 csv,
