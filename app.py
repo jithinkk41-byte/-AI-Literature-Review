@@ -133,7 +133,50 @@ if st.button("Search Papers"):
                 "search_results.csv",
                 "text/csv"
             )
+                 st.subheader("Compare Research Papers")
 
+            paper_titles = results["Title"].tolist()
+
+            if len(paper_titles) >= 2:
+
+                selected_papers = st.multiselect(
+                    "Select 2 papers to compare:",
+                    paper_titles,
+                    max_selections=2
+                )
+
+                if len(selected_papers) == 2:
+
+                    paper1 = results[
+                        results["Title"] == selected_papers[0]
+                    ].iloc[0]
+
+                    paper2 = results[
+                        results["Title"] == selected_papers[1]
+                    ].iloc[0]
+
+                    st.write("### Paper 1")
+                    st.write("**Title:**", paper1["Title"])
+                    st.write("**Year:**", paper1["Year"])
+                    st.write(
+                        "**Relevance Score:**",
+                        round(paper1["Relevance_Score"], 3)
+                    )
+                    st.write("**Abstract:**", paper1["Abstract"])
+
+                    st.write("### Paper 2")
+                    st.write("**Title:**", paper2["Title"])
+                    st.write("**Year:**", paper2["Year"])
+                    st.write(
+                        "**Relevance Score:**",
+                        round(paper2["Relevance_Score"], 3)
+                    )
+                    st.write("**Abstract:**", paper2["Abstract"])
+
+            else:
+                st.info(
+                    "Search for at least 2 papers to compare them."
+                )
     else:
         st.warning("Please enter a research topic.")
 
