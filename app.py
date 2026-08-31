@@ -104,7 +104,7 @@ if st.button("Search Papers"):
 
             st.subheader("Relevant Papers")
 
-            for i, (_, row) in enumerate(results.iterrows(), 1):
+                        for i, (_, row) in enumerate(results.iterrows(), 1):
 
                 with st.expander(f"{i}. {row['Title']}"):
 
@@ -115,7 +115,7 @@ if st.button("Search Papers"):
                         round(row["Relevance_Score"], 3)
                     )
 
-                                        st.write("**Abstract:**")
+                    st.write("**Abstract:**")
                     st.write(row["Abstract"])
 
                     st.write("**Quick Summary:**")
@@ -125,6 +125,7 @@ if st.button("Search Papers"):
                     summary = ". ".join(sentences[:2])
 
                     st.write(summary + ".")
+
                     st.write("**Paper:**")
                     st.write(row["URL"])
 
