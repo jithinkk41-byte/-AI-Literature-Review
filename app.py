@@ -203,36 +203,3 @@ paper_titles = results["Title"].tolist()
 
         paper2 = results[
             results["Title"] == selected_papers[1]
-        ].iloc[0]
-
-        st.subheader("Paper 1")
-        st.write("**Title:**", paper1["Title"])
-        st.write("**Year:**", paper1["Year"])
-        st.write(
-            "**Relevance Score:**",
-            round(paper1["Relevance_Score"], 3)
-        )
-        st.write("**Abstract:**", paper1["Abstract"])
-
-        st.subheader("Paper 2")
-        st.write("**Title:**", paper2["Title"])
-        st.write("**Year:**", paper2["Year"])
-        st.write(
-            "**Relevance Score:**",
-            round(paper2["Relevance_Score"], 3)
-        )
-        st.write("**Abstract:**", paper2["Abstract"])
-
-else:
-
-    st.info("Search for papers first to enable comparison.")
-        # Sidebar
-st.sidebar.title("About")
-
-st.sidebar.write(
-    "This application helps users find "
-    "relevant research papers using TF-IDF "
-    "and cosine similarity."
-)
-
-st.sidebar.write("Dataset: 1,000 research papers")
