@@ -91,7 +91,8 @@ if st.button("Search Papers"):
     if query.strip():
 
         results = search_papers(query, top_n)
-
+        
+st.session_state["search_results"] = results
         results = results[results["Year"] >= min_year]
 
         if results.empty:
@@ -184,10 +185,10 @@ if st.button("Search Papers"):
 
 st.header("Compare Research Papers")
 
+
 if "results" in locals() and len(results) >= 2:
-
-    paper_titles = results["Title"].tolist()
-
+    results = st.session_state["search_results"]
+paper_titles = results["Title"].tolist()
     selected_papers = st.multiselect(
         "Select 2 papers to compare:",
         paper_titles,
